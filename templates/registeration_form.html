@@ -1,0 +1,342 @@
+
+
+
+
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blood Bank</title>
+    <meta name = "viewport" content ="width=device-width, initial-scale=1 ">
+    <link rel="shortcut icon" href = "{{  url_for('static', filename ='images.jpeg')  }}" >
+
+
+
+
+</head>
+<body>
+<header>
+<link href="{{ url_for('static', filename ='css/bootstrap.min.css') }} " rel = "stylesheet" >
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <a class="navbar-brand" href="/">
+            <img style="max-width: 200px;" src="{{ url_for('static', filename ='images/blood_t.jpg') }}">
+        </a>
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button> -->
+   <!--     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/">Contributions</a> </li>
+            <li class="nav-item"><a class="nav-link" href="/"> Register </a></li>
+            <li class="nav-item" ><a class="nav-link" href="/">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="/">Contact </a></li>
+
+        </ul> -->
+        <ul class="navbar-nav mr-auto mt-0">
+            <li>
+               <button type="button" class=" btn btn-success">
+            <img src="{{ url_for('static', filename ='images.jpeg') }}" height="15"> Donate Blood Now </button>
+            </li>
+        </ul>
+
+
+       <!-- <ul class="nav nav-pills" role="tablist"> -->
+
+            <!--<form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search blood group ..." aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">🔍</button>
+            </form> -->
+<ul class="navbar-nav my-2 my-lg-0">
+    {% if session.logged_in %}
+        <li class="nav-item"><a class="nav-link" href="/logout/">Logout</a></li>
+    {% else %}
+
+    <li class="nav-item"><a class="nav-link" href="/login/">Login</a></li>
+    <li class="nav-item"><a class="nav-link" href="/register/">Register</a> </li>
+    <li>
+    {% endif %}
+            <form class="form-inline">
+                <div class="input-group">
+                    <input type="text" class="form-control mr-sm-2" list="blood groups" name="blood group" placeholder="Search blood group ..." aria-label="Username" aria-describedby="basic-addon1">
+                        <datalist id="blood groups">
+                            <option value="A +ve">
+                            <option value="A -ve">
+                            <option value="B +ve">
+                            <option value="B -ve">
+                            <option value="AB +ve">
+                            <option value="AB -ve">
+                            <option value="A1 +ve">
+                            <option value="A1 -ve">
+                            <option value="A1 -ve">
+                            <option value="A2 +ve">
+                            <option value="A2 -ve">
+                            <option value="A1B +ve">
+                            <option value="A1B -ve">
+                            <option value="A2B +ve">
+                            <option value="A2B -ve">
+                            <option value="O +ve">
+                            <option value="O -ve">
+                        </datalist>
+                    <div class="input-group-prepend">
+                    <!--    <span class="input-group-text" id="basic-addon1">🔍</span> -->
+                        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">🔍</button>
+                     </div>
+                </div>
+            </form>
+    </li>
+</ul>
+</nav>
+
+</header>
+
+</body>
+
+
+
+
+
+
+
+
+       <!-- </ul> -->
+
+
+
+<!-- Include the above in your HEAD tag -->
+
+
+
+<!-- <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="/crm/"><img src="" height="35px" style="margin-top:-10px;"></a>
+    </div>
+    <div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+         <li><a href=/crm/farmer/search/> <strong><span class="glyphicon glyphicon-user blue"></span>Farmer </strong></a></li>
+          <li><a href="/crm/catalog/view"><strong><span class="glyphicon glyphicon-grain blue"></span>Products</strong></a></li>
+          <li><a href="/crm/salesorder/search/"><strong><span class="glyphicon glyphicon-shopping-cart blue"></span> Orders</strong> </a></li>
+          <li><a href="/crm/salesorder/calls/"> <strong><span class="glyphicon glyphicon-earphone"></span>Manage Calls</strong> </a></li>
+        </ul>
+ <ul class="nav navbar-nav navbar-right">
+        
+        <li><a style="color:0099FF" href="/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+</nav>   -->
+<body>
+
+
+<link  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<div class="container">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <form class="form-horizontal" method="post" action="">
+          <fieldset>
+       
+          <div id="edit_farmer" style="display:none"></div>
+          <div class="row">
+            <div class="col-md-2 panel panel-heading">Contact Information</div>
+            <div class="col-md-4 panel panel-heading" style="display:none; color:red" id="contact_error"></div>
+          </div>
+
+          <div class="row form-group">
+            <label class="col-md-2 control-label" for="mobile">Contact No.</label>
+            <div class="col-md-3">
+    <div class="input-group">
+			<span class="input-group-addon">
+			<i class="glyphicon glyphicon-phone"></i>
+			</span>
+              <input id="mobile" maxlength="10" name="mobile" placeholder="xxxxxxxxxxxx" class="form-control input-md ac_mobile" type="number" value={{mobile}} >
+		
+            </div>
+	</div>
+            <label class="col-md-1 control-label" for="sms">Language</label>
+            <div class="col-md-3">
+		<div class="input-group">
+			<span class="input-group-addon">
+			<i class="glyphicon glyphicon-list"></i>
+			</span>
+              <select id="sms" name="sms" class="form-control input-md">
+                <option value="en">English</option>
+                <option value="gu">Gujarati</option>
+                <option value="mr">Marathi</option>
+                <option value="hi">Hindi</option>
+              </select>
+            </div>
+		</div>
+            <div class="col-md-1">
+	
+              <a id="add_mobile" onclick=add_mobile()><i class="glyphicon glyphicon-plus"></i></a>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-8" id="mobile_numbers"></div>
+          </div>
+
+          <div class="row form-group">
+            <label class="col-md-1 control-label" for="first_name">First Name</label>  
+            <div class="col-md-2">
+			<div class="input-group">
+			<span class="input-group-addon">
+			<i class="glyphicon glyphicon-user"></i>
+			</span>
+              <input id="first_name" name="first_name" placeholder="" class="form-control input-md" type="text">
+            </div></div>
+
+            <label class="col-md-1 control-label" for="middle_name">Mid Name</label>  
+            <div class="col-md-2">
+			<div class="input-group">
+			<span class="input-group-addon">
+			<i class="glyphicon glyphicon-user"></i>
+			</span>
+              <input id="middle_name" name="middle_name" placeholder="" class="form-control input-md" type="text">
+            </div>
+		</div>
+            <label class="col-md-1 control-label" for="last_name">Last Name</label>  
+            <div class="col-md-2">
+			<div class="input-group">
+			<span class="input-group-addon">
+			<i class="glyphicon glyphicon-user"></i>
+			</span>
+              <input id="last_name" name="last_name" placeholder="" class="form-control input-md" type="text">
+            </div>
+	</div>
+          </div>
+
+          <div class="row form-group">
+            <label class="col-md-2 control-label" for="farmer_type">Farmer Type</label>
+            <div class="col-md-4">
+              <label class="radio-inline"><input type="radio" name="farmer_type" value="Farmer" checked>Farmer</label>
+              <label class="radio-inline"><input type="radio" name="farmer_type" value="Politician">Politician</label>
+              <label class="radio-inline"><input type="radio" name="farmer_type" value="Retailer">Retailer</label>
+              <label class="radio-inline"><input type="radio" name="farmer_type" value="Supplier">Supplier</label>
+            </div>
+
+            <label class="col-md-1 control-label" for="description">Description</label>
+            <div class="col-md-4">
+			<div class="input-group">
+			<span class="input-group-addon">
+			<i class="glyphicon glyphicon-pencil"></i>
+			</span>
+              <textarea class="form-control" id="description" name="description" placeholder="Description"></textarea>
+            </div></div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="smartphone">Has Touchscreen Phone ?</label>
+            <div class="col-md-3">
+		
+                <label class="radio-inline"><input type="radio" name="smartphone" value=true>Yes</label>
+                <label class="radio-inline"><input type="radio" name="smartphone" value=false>No</label>
+                <label class="radio-inline"><input type="radio" name="smartphone" value=null checked>Don't Know</label>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2 panel panel-heading">Address Information</div>
+            <div class="col-md-4 panel panel-heading" style="display:none; color:red" id="address_error"></div>
+          </div>
+
+          <div class="row form-group">
+            <label class="col-md-2 control-label" for="village">Village</label>
+            <div class="col-md-2">
+		<div class="input-group">
+			<span class="input-group-addon">
+			<i class="glyphicon glyphicon-home"></i>
+			</span>
+
+              <input id="village" name="village" placeholder="" class="form-control input-md ac_village" required="" type="text">
+            </div> </div>
+
+            <label class="col-md-1 control-label" for="state">State</label>
+            <div class="col-md-2">
+		<div class="input-group">
+			<span class="input-group-addon">
+			<i class="glyphicon glyphicon-list"></i>
+			</span>
+
+              <input id="state" name="state" placeholder="" class="form-control input-md ac_state" required="" type="text">
+            </div></div>
+
+            <label class="col-md-1 control-label" for="district">District</label>
+            <div class="col-md-2">
+		<div class="input-group">
+			<span class="input-group-addon">
+			<i class="glyphicon glyphicon-list"></i>
+			</span>
+
+              <input id="district" name="district" placeholder="" class="form-control input-md ac_district" required="" type="text">
+            </div>
+		</div>
+          </div>
+
+          <div class="row form-group">
+            <label class="col-md-2 control-label" for="taluka">Taluka</label>  
+            <div class="col-md-2">
+              <input id="taluka" name="taluka" placeholder="" class="form-control input-md ac_taluka" required="" type="text">
+            </div>
+
+            <label class="col-md-1 control-label" for="other_taluka">Other Taluka</label>  
+            <div class="col-md-2">
+              <input id="other_taluka" name="other_taluka" disabled="true" class="form-control input-md ac_taluka" type="text">
+            </div>
+
+            <label class="col-md-1 control-label" for="post_office">Post Office</label>  
+            <div class="col-md-2">
+              <input id="post_office" name="post_office" placeholder="" class="form-control input-md ac_post_office" required="" type="text">
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <label class="col-md-2 control-label" for="pin_code">Pin Code</label>  
+            <div class="col-md-2">
+              <input id="pin_code" name="pin_code" placeholder="" disabled="true" class="form-control input-md" required="" type="text">
+            </div>
+
+            <label class="col-md-3 control-label" for="street_address">Address Line 1</label>
+            <div class="col-md-5">
+		<div class="input-group">
+			<span class="input-group-addon">
+			<i class="glyphicon glyphicon-pencil"></i>
+			</span>
+              <textarea class="form-control" id="street_address" name="street_address" placeholder="Addess Details..."></textarea>
+            </div>
+	</div>
+          </div>
+
+
+          <div class="form-group row">
+            <div class="col-md-8 text-center">
+              <button id="save" name="save" class="btn btn-large btn-success"> Save Farmer Information</button>
+              <button class="btn btn-large btn-danger" type="button" onclick=history.go(-1)> Cancel </button>
+            </div>
+          </div>
+          </fieldset>
+        </form>
+      </div>
+
+
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+   <!-- <script typ ></script> -->
+
+
+
+
+
+
+
+</body>
+</html>

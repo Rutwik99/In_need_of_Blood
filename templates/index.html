@@ -1,0 +1,206 @@
+
+
+<!DOCTYPE HTML>
+<html class="no-js" lang="de">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="robots" content="index,follow">
+
+<title>Blood Bank</title>
+<link rel="shortcut icon" href = "{{  url_for('static', filename ='images.jpeg')  }}" >
+<link href="{{ url_for('static', filename='css/main/font-awesome.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/main/animate.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/main/bootsnav.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/main/bootstrap.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/main/style.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main/swipebox.css') }}">
+
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> 
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-sticky bootsnav">
+
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+<i class="fa fa-bars"></i>
+</button>
+    <div>
+<a class="navbar-brand logo" href="index.html"><img src="{{ url_for('static', filename='images/main/blood.png') }}"  style="width: 100%; max-width: 250px; height: auto; margin-left: -40px"></a>
+
+{#            <button type="button" class=" btn btn-success"  style="width: 15%;   margin: 3px 42% 3px 43%;">#}
+{#            <img src="{{ url_for('static', filename ='images.jpeg') }}" height="15"> Donate Blood Now </button>#}
+{#   <button type="button" class="btn btn-success">#}
+{#<img src="{{ url_for('static', filename ='images.jpeg') }}" height="15"> Donate Blood Now </button>#}
+
+{#           <div class="navbar-left">#}
+{#               <button type="button" class=" btn btn-success">#}
+{#            <img src="{{ url_for('static', filename ='images.jpeg') }}" height="15"> Donate Blood Now </button>#}
+{#           </div>#}
+
+    </div>
+    </div>
+
+
+
+<div class="collapse navbar-collapse" id="navbar-menu">
+<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+<li><a href="/">Home</a></li>
+<li><a href="/contributions">Contributions</a></li>
+<li><a href="/register">Register</a></li>
+<li><a href="/login">Login</a></li>
+<li><a href="/contact/">Contact Us</a></li>
+</ul>
+</div>
+</div>
+</div>
+</nav>
+
+<div id="first-slider">
+    <div id="carousel-example-generic" class="carousel slide carousel-fade">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <!-- Item 1 -->
+            <div class="item active slide1">
+                        <h2 data-animation="animated bounceInDown"><span>Give a little change a lot</span></h2>
+                        <h3 data-animation="animated bounceInDown">Donation of Blood means a few minutes to you but a lifetime for somebody else.</h3>
+                        <!-- <h4 data-animation="animated bounceInUp"><a href="about-us.html">READ MORE</a></h4>              -->
+             </div> 
+            <!-- Item 2 -->
+            <div class="item slide2">
+                        <h2 data-animation="animated bounceInDown"><span>Bring a Life,Back To Power</span></h2>
+                        <h3 data-animation="animated bounceInDown">Tears of a mother cannot save her Child. But your Blood can.</h3>
+                        <!-- <h4 data-animation="animated bounceInUp"><a href="about-us.html">READ MORE</a></h4>              -->
+             </div>
+            <!-- Item 3 -->
+            <div class="item slide3">
+                        <h2 data-animation="animated bounceInDown"><span>Donate Blood,Donate Smile</span></h2>
+                        <h3 data-animation="animated bounceInDown">A single pint can save three lives, a single gesture can create a million smiles”</h3>
+                        <!-- <h4 data-animation="animated bounceInUp"><a href="about-us.html">READ MORE</a></h4>              -->
+             </div>
+            <!-- Item 4 -->
+            <div class="item slide4">
+                        <h2 data-animation="animated bounceInDown"><span>Hope for Life</span></h2>
+                        <h3 data-animation="animated bounceInDown">Donate your blood for a reason, let the reason to be life”</h3>
+                        <!-- <h4 data-animation="animated bounceInUp"><a href="about-us.html">READ MORE</a></h4>              -->
+             </div>
+            <!-- End Item 4 -->
+    
+        </div>
+        <!-- End Wrapper for slides-->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <i class="fa fa-angle-left"></i><span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <i class="fa fa-angle-right"></i><span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+<section id="about-sec">
+<div class="container">
+<div class="row text-center">
+<h1>ABOUT BLOOD DONATION</h1>
+<hr>
+<h5>It's an initiative to meet the emergency requirements of the blood</h5>
+<p>Blood Donation is service to Humankind,By Donating Blood you help a needy and save a precious life.
+Transfusion of blood every year saves Millions of life all over the world every year,Their are Millions of Blood Donors all over the world But still their are number of countries who don’t have adequate number of blood suppliers and face the challenge of blood supply to the patients i the country However WHO is trying to make available adequate blood to the needy patients all over the world in order of this World Blood Donors Day is celebrated on 14th June every year to promote Blood Donation all over the world,and one of the best way to promote a cause is sharing short quotes and slogans related to the cause here we will share some of the best slogans and quotes regarding blood donation-</p>
+<div class="text-center">
+<a href="/register" class="btn1">donate now</a>
+<!-- <a href="about-us.html" class="btn2">Read More</a> -->
+</div>
+</div>
+</div>
+</section>
+
+<section id="activities-sec">
+<div class="container">
+<div class="row text-center">
+<h1>WHAT YOU DO?</h1>
+<hr>
+<h5>Steps to use this app</h5>
+<div class="text-left"> 
+<div class="col-md-4 clearfix top-off">
+<div class="grid-content-left"><i class="fa fa-sign-in"></i></div>
+<div class="grid-content-wrapper"><h4>Register</h4><p>Click on the above register button and fill the form</p>
+<a href="/register" title="" >Read More</a>
+</div>
+</div>
+<div class="col-md-4 clearfix top-off">
+<div class="grid-content-left"><i class="fa fa-group"></i></div>
+<div class="grid-content-wrapper"><h4>Login</h4><p>Login through your own credentials when you again want to vist this app</p>
+<a href="/login" title="" >Read More</a>
+</div>
+</div>
+<div class="col-md-4 clearfix top-off">
+<div class="grid-content-left"><i class="fa fa-tint"></i></div>
+<div class="grid-content-wrapper"><h4>Need for blood</h4><p>Go to need blood tab and search for respective blood donors</p>
+<a href="/dashboard" title="" >Read More</a>
+</div>
+</div>
+<div class="col-md-6 clearfix top-off">
+<div class="grid-content-left"><i class="fa fa-ambulance"></i></div>
+<div class="grid-content-wrapper"><h4>Have a hospital?</h4><p>Then register as an admin user to conduct campaigns for blood donation</p>
+<a href="#" title="" >Read More</a>
+</div>
+</div>
+<!-- <div class="col-md-4 clearfix top-off">
+<div class="grid-content-left"><i class="fa fa-thumbs-up"></i></div>
+<div class="grid-content-wrapper"><h4></h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur eget justo quis dignissim.</p>
+<a href="activities.html" title="" >Read More</a>
+</div>
+</div> -->
+<div class="col-md-6 clearfix top-off">
+<div class="grid-content-left"><i class="fa fa-gratipay"></i></div>
+<div class="grid-content-wrapper"><h4>Donate for Humans</h4><p>when the get the notifications based on the data given you can ask them</p>
+<a href="#" title="" >Read More</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+ 
+<script type="text/javascript" src="{{ url_for('static', filename='js/main/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main/bootstrap.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main/bootsnav.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main/banner.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main/jquery.swipebox.js') }}"></script>
+<script type="text/javascript">
+	$( document ).ready(function() {
+
+			/* Basic Gallery */
+			$( '.swipebox' ).swipebox();
+			
+			/* Video */
+			$( '.swipebox-video' ).swipebox();
+
+			/* Dynamic Gallery */
+			$( '#gallery' ).click( function( e ) {
+				e.preventDefault();
+				$.swipebox( [
+					{ href : 'http://swipebox.csag.co/mages/image-1.jpg', title : 'My Caption' },
+					{ href : 'http://swipebox.csag.co/images/image-2.jpg', title : 'My Second Caption' }
+				] );
+			} );
+
+      });
+</script>
+<script src="{{ url_for('static', filename='js/main/script.js') }}"></script>
+</body>
+</html>

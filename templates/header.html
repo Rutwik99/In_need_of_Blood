@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blood Bank</title>
+    <meta name = "viewport" content ="width=device-width, initial-scale=1 ">
+    <link href="{{ url_for('static', filename ='css/bootstrap.min.css') }} " rel = "stylesheet" >
+    <link rel="shortcut icon" href = "{{  url_for('static', filename ='images.jpeg')  }}" >
+</head>
+
+
+
+<header>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <a class="navbar-brand" href="/">
+            <img style="max-width: 200px;" src="{{ url_for('static', filename ='images/blood_t.jpg') }}">
+        </a>
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button> -->
+   <!--     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/">Contributions</a> </li>
+            <li class="nav-item"><a class="nav-link" href="/"> Register </a></li>
+            <li class="nav-item" ><a class="nav-link" href="/">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="/">Contact </a></li>
+
+        </ul> -->
+        <ul class="navbar-nav mr-auto mt-0">
+            <li>
+               <button type="button" class=" btn btn-success">
+            <img src="{{ url_for('static', filename ='images.jpeg') }}" height="15"> Donate Blood Now </button>
+            </li>
+        </ul>
+
+
+       <!-- <ul class="nav nav-pills" role="tablist"> -->
+
+            <!--<form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search blood group ..." aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">🔍</button>
+            </form> -->
+<ul class="navbar-nav my-2 my-lg-0">
+    {% if session.logged_in %}
+        <li class="nav-item"><a class="nav-link" href="/logout/">Logout</a></li>
+    {% else %}
+
+    <li class="nav-item"><a class="nav-link" href="/login/">Login</a></li>
+    <li class="nav-item"><a class="nav-link" href="/register/">Register</a> </li>
+
+    {% endif %}
+<li>
+{#            <form class="form-inline">#}
+{#                <div class="input-group">#}
+{#                    <input type="text" class="form-control" list="blood groups" name="blood group" placeholder="Search blood group ..." aria-label="Username" aria-describedby="basic-addon1">#}
+{#                        <datalist id="blood groups">#}
+{#                            <option value="A +ve">#}
+{#                            <option value="A -ve">#}
+{#                            <option value="B +ve">#}
+{#                            <option value="B -ve">#}
+{#                            <option value="AB +ve">#}
+{#                            <option value="AB -ve">#}
+{#                            <option value="A1 +ve">#}
+{#                            <option value="A1 -ve">#}
+{#                            <option value="A1 -ve">#}
+{#                            <option value="A2 +ve">#}
+{#                            <option value="A2 -ve">#}
+{#                            <option value="A1B +ve">#}
+{#                            <option value="A1B -ve">#}
+{#                            <option value="A2B +ve">#}
+{#                            <option value="A2B -ve">#}
+{#                            <option value="O +ve">#}
+{#                            <option value="O -ve">#}
+{#                        </datalist>#}
+{#                    <div class="input-group-prepend">#}
+{#                    <!--    <span class="input-group-text" id="basic-addon1">🔍</span> -->#}
+{#                        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">🔍</button>#}
+{#                     </div>#}
+{#                </div>#}
+{#            </form>#}
+    </li>
+</ul>
+</nav>
+
+</header>
+
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}" ></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
+<div class = "container"  style="min-height: 100%; max-width: 80%;">
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismiss" role="alert" style="margin-top: 3px;">
+            <button type="button" class="close" data-dismiss="alert" aria-Label="Close"><span>&times;</span></button>
+                {{ message }}
+
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{% block body %}{% endblock %}
+
+</div>
+
+
+
+
+       <!-- </ul> -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+{%  extends "header.html" %}
+{%  block body %}
+<script>
+</script>
+
+
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="margin-top: 3px;">
+  <li class="nav-item">
+{#      {% if not selected %}#}
+          <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+{#      {% else %}#}
+{#          <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">Home</a>#}
+{#      {% endif %}#}
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+  </li>
+  <li class="nav-item">
+{#      {% if selected %}#}
+{#        <a class="nav-link active" id="pills-need_blood-tab" data-toggle="pill" href="#pills-need_blood" role="tab" aria-controls="pills-need_blood" aria-selected="true">Need Blood</a>#}
+{#      {% else %}#}
+        <a class="nav-link" id="pills-need_blood-tab" data-toggle="pill" href="#pills-need_blood" role="tab" aria-controls="pills-need_blood" aria-selected="false">Need Blood</a>
+{#      {% endif %}#}
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" id="pills-notifications-tab" data-toggle="pill" href="#pills-notifications" role="tab" aria-controls="pills-notifications" aria-selected="false">Notifications</a>
+  </li>
+{#  <li class="nav-item">#}
+{#    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>#}
+{#  </li>#}
+</ul>
+    <hr>
+<div class="tab-content">
+{#    {% if not selected %}#}
+        <div class="tab-pane show fade active" align="left" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+{#    {% else %}#}
+{#        <div class="tab-pane show fade" align="left" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">#}
+{#    {% endif %}#}
+{#      <ul>#}
+{#          {% for t in USER_DICT["Home"] %}#}
+{#            <li>{{ t }}</li>#}
+{#          {% endfor %}#}
+{#      </ul>#}
+            <div class="card">
+              <h5 class="card-header">Camp</h5>
+              <div class="card-body">
+                <h5 class="card-title">Blood donation Camp on 15th Aug 2018</h5>
+                  <div class="card-text"> &nbsp;&nbsp;<p>Blood Donation is service to Humankind,By Donating Blood you help a needy and save a precious life.</p>
+<p>Transfusion of blood every year saves Millions of life all over the world every year,Their are Millions of Blood Donors all over the world,
+    but still their are number of countries who don’t have adequate number of blood suppliers and face the challenge of blood supply to the patients in the country.</p>
+            <p> So we are organising blood camp in our campus on 15th January 2018 from.</p>
+                  <p>Venue: Aarogya, IIIT-H</p>
+                  <p>Timing: 10 A.M to 5 P.M</p>
+                  </div>
+
+
+
+              </div>
+            </div>
+<br>
+          <div class="card">
+              <h5 class="card-header">Camp</h5>
+              <div class="card-body">
+                <h5 class="card-title">Blood donation Camp on 26th Jan 2018</h5>
+                  <div class="card-text"> &nbsp;&nbsp;<p>Blood Donation is service to Humankind,By Donating Blood you help a needy and save a precious life.</p>
+<p>Transfusion of blood every year saves Millions of life all over the world every year,Their are Millions of Blood Donors all over the world,
+    but still their are number of countries who don’t have adequate number of blood suppliers and face the challenge of blood supply to the patients in the country.</p>
+            <p> So we are organising blood camp in our campus on 26th January 2018.</p>
+                  <p>Venue: Aarogya, IIIT-H</p>
+                  <p>Timing: 10 A.M to 5 P.M</p>
+                  </div>
+
+            Blood donation is The most valued service to mankind . Nothing is comparable to the preciousness of human blood. “The gift of blood is the gift of life. There is no substitute for human blood. Blood cannot be manufactured – it can only come from generous donors.”
+
+
+              </div>
+            </div>
+
+<br>
+          <div class="card">
+              <h5 class="card-header">Camp</h5>
+              <div class="card-body">
+                <h5 class="card-title">Blood donation Camp on 15th Aug 2017</h5>
+                  <div class="card-text"> &nbsp;&nbsp;<p> Blood donation is The most valued service to mankind . Nothing is comparable to the preciousness of human blood.</p>
+<p>“The gift of blood is the gift of life. There is no substitute for human blood. Their are Millions of Blood Donors all over the world,
+    but still their are number of countries who don’t have adequate number of blood suppliers and face the challenge of blood supply to the patients in the country.</p>
+            <p> So we are organising blood camp in our campus on 15th Aug 2017.</p>
+                  <p>Venue: Aarogya, IIIT-H</p>
+                  <p>Timing: 10 A.M to 5 P.M</p>
+                  </div>
+
+
+              </div>
+            </div>
+
+
+
+
+
+  </div>
+
+  <div class="tab-pane fade" id="pills-profile" align="left" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <ul>
+          {%  for t in USER_DICT["Profile"] %}
+              <a href={{ t[1] }}><li>{{ t[0] }}</li></a>
+          {% endfor %}
+      </ul>
+
+  </div>
+{#    {% if selected %}#}
+{#        <div class="tab-pane fade active" id="pills-need_blood" align="left" role="tabpanel" aria-labelledby="pills-need_blood-tab">#}
+{#    {% else %}#}
+        <div class="tab-pane fade" id="pills-need_blood" align="left" role="tabpanel" aria-labelledby="pills-need_blood-tab">
+{#    {% endif %}#}
+        <form action ="/dashboard/" method="post">
+            <fieldset>
+                <br>
+                <legend>Request Form</legend>
+                {% from "update_helpers.html" import render_field  %}
+                <div class="col-md-6">{{ render_field(form.bloodgroup, '❤️', **{"class":"form-control mr-auto", "aria-describedby":"basic-addon1", "required":""}) }}</div>
+                <div class="col-md-6">{{ render_field(form.state, '🗺️', "Please select state in which you need blood", '',
+                                        **{"class":"form-control mr-auto", "aria-describedby":"basic-addon1", "required":"", "id":"state", "onchange":"selectCity(this.value)"}) }}</div>
+                <div class="col-md-6">
+                    <dt><label for="city">City</label></dt>
+                <span class="input-group  mb-3">
+
+                    <span class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">🏙️</span>
+                    </span>
+                    <select aria-describedby="basic-addon1" class="form-control mr-auto" id="city" name="city" required disabled>
+                        <option>Please select state first.</option>
+                    </select>
+                </span>
+                </div>
+                <br>
+                <p> <input class="btn btn-primary" type=submit value="Find Donors"></p>
+
+                {% if user_list %}
+                    {{ user_list|safe }}
+                {% endif %}
+
+
+
+            </fieldset>
+
+        </form>
+
+    </div>
+
+    <div class="tab-pane fade" id="pills-notifications" align="left" role="tabpanel" aria-labelledby="pills-notifications-tab">
+        <ul>
+{#            {% for t in notifications %}#}
+{#                <li>{{ t[0] }}</li>#}
+{#            {% endfor %}#}
+            {% for note,name in noti_names|reverse%}
+                <div class="card">
+                  <h5 class="card-header">{{ name }} need some blood</h5>
+                  <div class="card-body">
+                    <h5 class="card-title">{{ note['subject'] }}</h5>
+                    <p class="card-text">{{ note['notification'] }}</p>
+                      <form action = "#">
+                          <input type="submit" class="btn btn-primary" name="accept" value="Accept">&nbsp;
+                          <input type="submit" class="btn btn-danger" name="reject" value="Reject">
+                      </form>
+                  </div>
+                </div>
+                <br>
+            {% endfor %}
+{#          {% for name in names|reverse%}#}
+{#                <div class="card">#}
+{#                  <h5 class="card-header">{{ name }} need some blood</h5>#}
+{#                  <div class="card-body">#}
+{#                    <h5 class="card-title">hdghs</h5>#}
+{#                    <p class="card-text">gbhdbhj</p>#}
+{#                      <form action = "#">#}
+{#                          <input type="submit" class="btn btn-primary" value="Accept">&nbsp;#}
+{#                          <input type="submit" class="btn btn-danger" value="Reject">#}
+{#                      </form>#}
+{#                  </div>#}
+{#                </div>#}
+{#                <br>#}
+{#          {% endfor %}#}
+{#        </ul>#}
+    </div>
+    <div class="tab-pane fade" id="pills-contact" align="left" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <ul>
+            {% for t in USER_DICT["Contact"] %}
+                <li>{{ t }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+
+
+      <script>
+
+        var cit = {{ cities_dict|safe }};
+        cit[0] = [];
+
+        function selectCity(value) {
+            var state_element = document.getElementById('city');
+            state_element.length = 0;
+            state_element.removeAttribute('disabled');
+            state_element.options[0] = new Option('Select city', '');
+
+            for (var i=0;i<cit[value].length;i++) {
+                state_element.options[state_element.length] = new Option(cit[value][i], cit[value][i]);
+            }
+
+        }
+      </script>
+
+
+{% endblock %}

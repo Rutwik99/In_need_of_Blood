@@ -1,0 +1,74 @@
+{% extends "header.html" %}
+
+{% block body %}
+    <h1>Frequently Asked Questions</h1><hr><br>
+<p>Our donors have requested a FAQ (Frequently Asked Questions) page with answers concerning many aspects of blood donation and the Central California Blood Center. In response to that request we have compiled a set of questions and answers. Feel free to call and ask our staff for more information on any of these topics.</p>
+<h2>How long does it take to give blood?</h2>
+<p>The donation process includes registration, a brief medical screening, blood collection, and time for refreshments in the Canteen. For whole blood the entire donation process usually takes about one hour and the actual blood collection segment is usually about 15 minutes. For apheresis collections the entire process is about two hours.</p>
+<br><h2>How much blood is taken?</h2>
+<p>Whole blood donations are approximately one pint. Apheresis donations also take about a pint of fluid; both weigh approximately one pound.</p>
+<br><h2>What are platelets?</h2>
+<p>Platelets, are tiny cells which circulate throughout the blood and are essential in blood clotting.</p>
+<br><h2>How often can I give?</h2>
+<p>Whole blood donors may give once every 56 days (eight weeks) in order to allow plenty of time to replenish their red blood cells. Apheresis (platelet) donors can donate more frequently, as much as twice in one month up to 24 times per year, because the platelet and plasma components are replaced in the body quicker than red blood cells. Platelets and Plasma will return to normal levels within a few hours of donating. The red blood cells, the oxygen-carrying cells, can take two weeks or longer to fully return to normal.</p>
+<br><h2>Are the health history questions necessary every time?</h2>
+<p>To ensure the safest possible blood supply, all screening questions must be asked of all donors at each donation. The FDA (Food &amp; Drug Administration) requires that all blood centers conform to this practice.</p>
+<br><h2>Why do I have to read that information sheet each time I donate?</h2>
+<p>Donors must read the sheet prior to every blood donation, no matter how many times they have donated! This "pre-donation" information is required reading by each donor. We are required by the FDA (the government body that regulates our facility) to give each donor the information contained in the pre-donation sheet. The sheet lists high risk activities and certain situations that might exclude a donor. Because information changes regularly, we ask that donors read the sheet before each donation.</p>
+<br><h2>How much blood do I have in my body?</h2>
+<p>As a general rule, women have approximately 10 pints and men have approximately 12 pints of blood.</p>
+<br><h2>How does giving blood affect me?</h2>
+<p>Very little! Your fluid volume is back to normal within 24 hours after you donate. Your white cell count returns to normal within 72 hours after you donate. An adult of average weight has about 10 to 12 pints of blood so the one taken is hardly missed.</p>
+<br><h2>Is there a minimum or maximum age limit on donating blood?</h2>
+<p>Donors must be at least 18 years old (16 and 17 year olds must have written parental consent). There is no upper age limit.</p>
+<br><h2>What is the universal blood type?</h2>
+<p>Type O negative, occurring in about 7% of the U.S. population, is the universal blood type. O-Negative can be given to any other blood type. AB-Positive, which occurs in only 3% of the U.S. population, is the universal recipient blood type, as this type can receive any other blood type.</p>
+<br><h2>How long until my blood is used?</h2>
+<p>All blood donations are processed and available for use usually within 24 hours. Whole blood is processed into components (red blood cells, platelets, plasma). After processing, the red blood cells can be stored for 42 days. Plasma can be frozen and stored for up to 12 months and platelets (from whole blood or by apheresis) can be stored for 5 days.</p>
+<br><h2>What do you test for?</h2>
+<p>Blood samples, drawn in separate tubes at the time of donation, are tested for a variety of infections that might be transmitted through blood transfusion including syphilis, hepatitis B, hepatitis C and HIV. All results are kept confidential.</p>
+<br><h2>How long does blood last?</h2>
+<p>Blood is a fragile substance. It is a liquid living tissue and the different components can be kept alive for a defined amount of time depending on the component. Red Blood Cells last 42 days; Platelets last 5 days; Plasma can be frozen and stored for up to one year.</p>
+<br><h2>How can I increase my iron level?</h2>
+<p>Donors may be deferred from donating due to a low blood cell count/iron (hematocrit) level. This requirement is for the safety of the donor to ensure that after donation, the donor's iron level will still be within the normal range for a healthy adult. Eating foods high in iron (e.g. red meat, dark green vegetables, raisins) or taking a multi-vitamin with iron may help increase the red blood cell count (iron levels).</p>
+<br><h2>Why are pregnant women unable to donate?</h2>
+<p>Although no problems have been reported, the safety of donating blood during or shortly after pregnancy has not been fully established. There may be medical risks to mother and baby if a blood donation is made while pregnant or shortly after pregnancy.  Mothers need their blood for their growing/developing child.</p>
+
+
+
+
+		<script type="text/javascript">
+			function doZipSearch(zip) {
+				if ($.trim(zip).length > 0) {
+					var rootPath = $('.RootPath:first').val();
+					var authority = $('.UrlAuthority:first').val();
+
+					window.location.href='http://'+authority+rootPath+'donate-blood/blood-drive-schedule/'+zip;
+				}
+			}
+			$(document).ready(function () {
+				$('#main-nav ul > li').hover(
+					function () {
+						//show its submenu
+						$('ul', this).show(0);
+					},
+					function () {
+						//hide its submenu
+						$('ul', this).hide(0);
+					}
+				);
+				$('input[id$="zipSearch"]').attr('placeholder', 'Find a blood drive by zip code');
+				$('input[id$="zipSearch"]').on('keypress', function(e) {
+					var code = (e.keyCode ? e.keyCode : e.which);
+					if (code == 13) {
+						e.preventDefault();
+						doZipSearch($(this).val());
+					}
+				});
+				$('input[id$="zipSearchBtn"]').on('click', function() {
+					doZipSearch($('input[id$="zipSearch"]').val());
+				});
+			});
+		</script>
+
+{% endblock %}

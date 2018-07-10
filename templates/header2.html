@@ -1,0 +1,75 @@
+
+
+<!DOCTYPE HTML>
+<html class="no-js" lang="de">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="robots" content="index,follow">
+
+<title>Blood Donation</title>
+
+<link href="{{ url_for('static', filename='css/main/font-awesome.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/main/animate.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/main/bootsnav.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/main/bootstrap.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/main/style.css') }}" rel="stylesheet">
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+{#<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">  #}
+</head>
+<body>
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-sticky bootsnav">
+
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+<i class="fa fa-bars"></i>
+</button>
+    <div>
+<a class="navbar-brand logo" href="index.html"><img src="{{ url_for('static', filename='images/main/blood.png') }}"  style="width: 100%; max-width: 250px; height: auto; margin-left: -40px"></a>
+
+
+    </div>
+    </div>
+
+
+
+<div class="collapse navbar-collapse" id="navbar-menu">
+<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+<li><a href="/">Home</a></li>
+<li><a href="#">Contributions</a></li>
+<li><a href="/register/">Register</a></li>
+<li><a href="/login/">Login</a></li>
+<li><a href="#">Contact Us</a></li>
+</ul>
+</div>
+</nav>
+
+
+<div class = "container"  style="min-height: 100%; max-width: 80%;">
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismiss" role="alert" style="margin-top: 3px;">
+            <button type="button" class="close" data-dismiss="alert" aria-Label="Close"><span>&times;</span></button>
+                {{ message }}
+
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{% block body %}{% endblock %}
+
+</div>

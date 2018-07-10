@@ -1,0 +1,215 @@
+{% extends "header.html" %}
+{% block body %}
+    <meta id="state-data" data-name="{{name}}">
+
+      <script>
+
+        var cit = {{ cities_dict|safe }};
+        cit[0] = [];
+        var done = false;
+
+
+
+        function selectCity(value) {
+            done = true;
+            var state_element = document.getElementById('city');
+            state_element.length = 0;
+            state_element.removeAttribute('disabled');
+            state_element.options[0] = new Option('Select city', '');
+
+            for (var i=0;i<cit[value].length;i++) {
+                state_element.options[state_element.length] = new Option(cit[value][i], cit[value][i]);
+            }
+
+        }
+
+    </script>
+
+
+
+<body>
+    <div class="container">
+        <h4 style="margin-top:10px;">Update Form</h4>
+        <br>
+        {% from "update_helpers.html" import render_field %}
+        <form method="post" action="/update/"  onsubmit="check_password();">
+        <dl>
+
+            <div class="card">
+  <div class="card-body bg-primary font-weight-bold">User Credentials</div>
+</div>
+            <br>
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">{{ render_field(form.username, '📛', "", "",
+                **{"class":"form-control mr-auto",
+                			"placeholder": data_dict['username'],
+                        "aria-describedby":"basic-addon1" }) }}</div>
+
+{#                "pattern":".{4,20}", "required":"",#}
+{#                "title":"5 to 20 characters",#}
+{#                "oninvalid":"this.setCustomValidity('Username must be 4 to 20 characters long')",#}
+{#                "oninput":"setCustomValidity('')"#}
+{#) }}</div>#}
+                <div class="col-md-6 mb-3">
+                    {{ render_field(form.present_password, '🔑',
+                            **{"class":"form-control", "aria-describedby":"basic-addon1", "required":"" ,"pattern":".{0}|(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"  }) }}
+                    {% if error %}
+                        <span>{{ error }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="form-row">
+
+                <div class="col-md-6 mb-3">{{ render_field(form.new_password, '🔑', 'Password must be atleast 7 characters long.', "Nice, good password.",
+                **{"class":"form-control mr-auto", "aria-describedby":"basic-addon1", "pattern":".{0}|(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$", "id":"new_password"}) }}</div>
+                <div class="col-md-6 mb-3">{{ render_field(form.confirm, '🔑', 'This field must be atleast 7 characters long.', '', 'confirm_message',
+                **{"class":"form-control mr-auto", "aria-describedby":"basic-addon1", "pattern":".{0}|(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$", "id":"confirm_password", "onkeyup":"check_password()"}) }}</div>
+            </div>
+            <br><br>
+             <div class="card">
+  <div class="card-body bg-success font-weight-bold ">User Perosonal Details</div>
+</div>
+
+                 <br>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">{{ render_field(form.firstname, '👱',
+                **{"class":"form-control mr-auto", "aria-describedby":"basic-addon1", "placeholder":data_dict['firstname'] }) }}</div>
+                <div class="col-md-6 mb-3">{{ render_field(form.lastname, '👱', **{"class":"form-control mr-auto",
+					"placeholder":data_dict['lastname'],
+                 "aria-describedby":"basic-addon1"}) }}</div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">{{ render_field(form.gender, '👱',
+                        **{"class":"form-control mr-auto",
+					"placeholder":data_dict['gender'],
+			 "aria-describedby":"basic-addon1"}) }}</div>
+            <div class="col-md-4 mb-3">{{ render_field(form.date, '🎂',
+            **{"type":"date", "class":"form-control mr-auto", "aria-describedby":"basic-addon1",
+					"value":data_dict['DateofBirth'] }) }}</div>
+            <div class="col-md-4 mb-3">{{ render_field(form.weight, '🏋️', "Sorry you can't donate blood with this weight", "Now you can donate blood",
+            **{"type":"number", "class":"form-control mr-auto",
+					"value":data_dict['weight'],
+			  "aria-describedby":"basic-addon1", "min":50, "max":150, "required":""}) }}</div>
+            </div>
+          <div class="form-row">
+
+            <div class="col-md-6 mb-3">{{ render_field(form.bloodgroup, '❤️', **{"class":"form-control mr-auto", "aria-describedby":"basic-addon1",
+					"value":data_dict['BloodGroup']}) }}</div>
+            <div class="col-md-6 mb-3">{{ render_field(form.pdonations, '💉',
+            **{"type":"number", "class":"form-control mr-auto", "aria-describedby":"basic-addon1", "min":"0"}) }}</div>
+            </div>
+              <br><br>
+
+            <div class="card">
+  <div class="card-body bg-info font-weight-bold ">User Contact Details</div>
+</div>
+            <br>
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">{{ render_field(form.email, '📧',"Please enter a valid email address", "Looks like a valid email address",
+        **{"class":"form-control mr-auto",
+                "aria-describedby":"basic-addon1",
+					"value":data_dict['emailid'],
+			  
+                "type":"email", "required":""}) }}</div>
+
+                <div class="col-md-6 mb-3">{{ render_field(form.phonenumber, '📞', "Please enter a valid phone number because others in need of blood can contact you", "Keep this number always swithched on ☺️",
+                **{"class":"form-control mr-auto", "aria-describedby":"basic-addon1",
+					"value":data_dict['phonenumber'],
+			   "required":"", "pattern":"[6789][0-9]{9}"}) }}</div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">{{ render_field(form.state, '🗺️',
+                **{"class":"form-control mr-auto", "aria-describedby":"basic-addon1", "required":"", "id":"state",  "onchange":"selectCity(this.value)"}) }}</div>
+{#                <div class="col-md-6 mb-3">{{ render_field(form.city, '🏙️',"Please enter your current resident city", '',#}
+{#                **{"class":"form-control mr-auto", "aria-describedby":"basic-addon1", "required":"", "id":"city"}) }}</div>#}
+
+                <div class="col-md-6 mb-3">
+                    <dt><label for="city">City</label></dt>
+                <span class="input-group  mb-3">
+                    <span class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">🏙️</span>
+                    </span>
+                    <select aria-describedby="basic-addon1" class="form-control mr-auto" id="city" name="city" required>
+                        {% for i in cities_dict[data_dict['State']] %}
+                            {% if i==data_dict['City'] %}
+                                <option value="{{ i }}" selected>{{ i }}</option>
+                            {% else %}
+                                <option value="{{ i }}">{{ i }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </span>
+            </div>
+            </div>
+            {{ render_field(form.address, '🏠', "Please enter your full resident address", '',
+            **{"class":"form-control mr-auto", "aria-describedby":"basic-addon1", "value":data_dict['Address']}) }}
+
+        </dl>
+            <p> <input class="btn btn-primary" type=submit value="Update Changes"></p>
+        </form>
+        {% if error %}
+        <p class="error"><strong>Error:</strong>{{ error }}</p>
+        {% endif %}
+
+    </div>
+
+</body>
+
+{##}
+{#    <script>#}
+{#    // Example starter JavaScript for disabling form submissions if there are invalid fields#}
+{#    (function() {#}
+{#      'use strict';#}
+{#      window.addEventListener('load', function() {#}
+{#        // Fetch all the forms we want to apply custom Bootstrap validation styles to#}
+{#        var forms = document.getElementsByClassName('needs-validation');#}
+{#        // Loop over them and prevent submission#}
+{#        var validation = Array.prototype.filter.call(forms, function(form) {#}
+{#          form.addEventListener('submit', function(event) {#}
+{#            if (form.checkValidity() === false) {#}
+{#              event.preventDefault();#}
+{#              event.stopPropagation();#}
+{#            }#}
+{#            form.classList.add('was-validated');#}
+{#          }, false);#}
+{#        });#}
+{#      }, false);#}
+{#    })();#}
+{##}
+{##}
+{##}
+{#    </script>#}
+
+
+
+
+    <script>
+    var adr=document.getElementById('address');
+    var valu = adr.getAttribute('value');
+        console.log(adr);
+
+        adr.innerHTML = String(valu);
+        console.log(adr.innerHTML);
+
+
+    </script>
+    <script>
+    var password = document.getElementById("new_password");
+    confirm_password = document.getElementById("confirm");
+
+function check_password(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = check_password;
+confirm_password.onkeyup = check_password;
+    </script>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script>
+    var cities = [];
+
+
+    {#var cit = {{ cities_dict }};#}
+    {#console.log(cit);#}
+    var cit = {{ cities_dict|safe }};
+    cit[0] = []
+
+    cities = {
+        'Assam': ['a', 'b', 'c'],
+        'Andhra Pradesh': ['d', 'e', 'f']
+    };
+
+    function selectCity(val) {
+        var state_element = document.getElementById('city');
+        state_element.length = 0;
+        state_element.options[0] = new Option('Select State', '');
+
+        for (var i=0;i<cit[val].length;i++) {
+            state_element.options[state_element.length] = new Option(cit[val][i], cit[val][i]);
+        }
+
+    }
+
+
+
+
+</script>
+
+<body>
+
+	<form>
+		<p>Select State</p>
+		<select onchange="selectCity(this.value)" id="state">
+			{% for i in states %}
+				<option value='{{ i[0] }}'>{{ i[1] }}</option>
+			{% endfor %}
+		</select>
+					<p>Select City</p>
+
+		<select id="city">
+			
+		</select>
+
+	</form>
+
+</body>
+
+
+
+
+
+</html>	

@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="de">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="robots" content="index,follow">
+
+<title>Blood Bank</title>
+    <link rel="shortcut icon" href = "{{  url_for('static', filename ='images.jpeg')  }}" >
+<link href="{{ url_for('static', filename='css/main/font-awesome.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/main/animate.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/main/bootsnav.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/main/bootstrap.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/main/style.css') }}" rel="stylesheet">
+
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> 
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">  
+</head>
+
+
+
+
+<nav class="navbar navbar-default navbar-sticky bootsnav">
+
+
+
+
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+<i class="fa fa-bars"></i>
+</button>
+<a class="navbar-brand logo" href="index.html"><img src="{{ url_for('static', filename='images/main/blood.png') }}"  style="width: 100%; max-width: 250px; height: auto; margin-left: -40px"></a>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="collapse navbar-collapse" id="navbar-menu">
+<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+<li><a href="/">Home</a></li>
+<li><a href="#">Contributions</a></li>
+<li><a href="/register/">Register</a></li>
+<li><a href="/login">Login</a></li>
+<li><a href="/contact">Contact Us</a></li>
+</ul>
+</div>
+</div>
+</div>
+</nav>
+
+ <div style="background-color:aqua">
+	<br>
+	<br>
+	<br>
+	<br>
+	<div id="piechart" style="width: 900px; height: 500px;">
+	</div>
+	<br>
+	<br>
+	<br>
+	<div id="pie1chart" style="width: 900px; height: 500px;">
+	</div>
+ </div>
+
+
+
+
+<section id="help">
+<div class="container">
+<div class="row text-center">
+<h1>WAYS TO HELP</h1>
+<hr>
+<h5>Save the humanity in contributing your blood</h5>
+<div class="text-left"> 
+<div class="col-md-6 clearfix top-off">
+<div class="icon_circle"><i class="fa fa-heartbeat">&nbsp;</i></div>
+<div class="help-text">
+<h4>Donate</h4>
+<div class="line line-50"></div>
+<p>
+	A drop of your blood can save a life!!!
+</p>
+</div>
+</div>
+<div class="col-md-6 clearfix top-off">
+<div class="icon_circle"><i class="fa fa-user-plus">&nbsp;</i></div>
+<div class="help-text">
+<h4>Participate</h4>
+<div class="line line-50"></div>
+<p>Be a person to fulfill other human goals by your blood</p>
+</div>
+</div>
+<div class="col-md-6 clearfix top-off">
+<div class="icon_circle"><i class="fa fa-usd">&nbsp;</i></div>
+<div class="help-text">
+<h4>Fundraise</h4>
+<div class="line line-50"></div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</div>
+</div>
+<div class="col-md-6 clearfix top-off">
+<div class="icon_circle"><i class="fa fa-credit-card">&nbsp;</i></div>
+<div class="help-text">
+<h4>Contribute</h4>
+<div class="line line-50"></div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="team">
+<div class="container">
+<div class="row text-center">
+<h1>MEET OUR TEAM</h1>
+<hr>
+<h5>IIIT HYDERABAD</h5>
+<div class="member col-xs-6 col-md-6">
+<div class="inner">
+<div class="avatar-inner"><img src="{{ url_for('static', filename='images/main/charan.jpg') }}" style="width:100%;max-width:400px;height: auto "></div>
+<div class="info"><div class="name"><a href="#"> VENKATA CHARAN CHINNI </a></div><div class="regency">Volunteer</div></div>
+</div>
+</div>
+
+<div class="member col-xs-6 col-md-6s">
+<div class="inner">
+<div class="avatar-inner"><img src="{{ url_for('static', filename='images/main/sriteja.jpg') }}" style="width:100%;max-width:400px;height: auto "></div>
+<div class="info"><div class="name"><a href="#"> SRITEJA SUGOOR </a></div><div class="regency">Volunteer</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['A-', {{ bd_dict['A-'] }}],
+          ['A+', {{ bd_dict['A+'] }}],
+          ['B+', {{ bd_dict['B+'] }}],
+          ['B-', {{ bd_dict['B-'] }}],
+          ['O+', {{ bd_dict['O+'] }}],
+          ['O-', {{ bd_dict['O-'] }}],
+          ['AB-', {{ bd_dict['AB-'] }}],
+          ['AB+', {{ bd_dict['AB+'] }}]
+        ]);
+
+        var options = {
+          title: 'Contributers'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['A-', 12],
+          ['A+', 10],
+          ['B+', 3],
+          ['B-', 3],
+          ['O+', 3],
+          ['O-', 73],
+          ['AB-',18],
+          ['AB-',30]
+        ]);
+
+        var options = {
+          title: 'Donaters'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('pie1chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/main/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main/bootstrap.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main/bootsnav.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main/banner.js') }}"></script>  
+<script src="{{ url_for('static', filename='js/main/script.js') }}"></script>
+</body>
+</html>

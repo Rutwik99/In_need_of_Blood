@@ -1,0 +1,60 @@
+{% extends "header.html" %}
+{% block body %}
+    <br>
+    {% if not user_list %}
+        <h5>Sorry, We don't have any registered users with blood group <b>{{ blood_group }}</b> in <b>{{ city }}</b>, try searching nearby cities.</h5>
+    {% else %}
+    <h5><b>List of donors who can able to donate to the blood group {{ blood_group }} in {{ city }} of {{ state }}</b></h5>
+    <br>
+    <table class="table">
+  <thead>
+    <tr>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Email Id</th>
+        <th scope="col">Address</th>
+    </tr>
+  </thead>
+  <tbody>
+{% set k=1 %}
+  {%- for i in user_list %}
+    <tr>
+        <th class="col-md-1" scope="row">{{ loop.index }}</th>
+        <td class="col-md-2">
+        {%- for j in i[0:2] %}
+            {{ j }}
+        {% endfor -%}
+        </td>
+        <td class="col-md-2">{{ i[2] }}</td>
+        <td class="col-md-2">{{ i[3] }}</td>
+        {%- for j in i[4:5] %}
+            <td class="col-md-4">{{ j }}</td>
+        {% endfor -%}
+    {% set k = k + 1 %}
+    </tr>
+  {% endfor -%}
+
+{#  {% for bd_gp, users in user_dict.items() %}#}
+{#      {% for  %}#}
+{#  {% endfor %}#}
+
+  </tbody>
+</table>
+        <br><br>
+        <form action="/make_a_request/" method="post">
+            <dl><label for="notification"><b>Request Message:</b></label>
+                <dt><input type="text" name="Subject" placeholder="Subject" style="margin-bottom: 5px;  " required></dt>
+            <input type="hidden" name="user_list" value="{{ user_list }}">
+
+                <dt><textarea name="notification" class="col-md-7" rows="10" cols="25" required placeholder="A brief description of your request..."></textarea></dt>
+            </dl>
+                <input type="submit" value="Make a Request" class="btn btn-primary">
+
+        <br><br>
+        <p>When you make a request a confirm/reject notification is sent to every user in the above list, if any user
+            is willing to donate then he may accept the request. When any user accept the request then you are notified
+            with that. Please do not make false requests</p>
+        </form>
+    {% endif %}
+{% endblock %}
